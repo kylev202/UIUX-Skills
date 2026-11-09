@@ -1,227 +1,260 @@
 ---
 name: unslop
-description: Use when building, redesigning, or fixing any frontend UI that looks generic or "AI made". Derives the design from the brief instead of from a default recipe, applies 20 concrete unslop fixes, then verifies by rendering screenshots and linting. Replaces the overlapping ban-list skills as the single driver for UI work.
+description: Run frontend web design as a structured studio of senior designers so the result never looks AI-generated. Use this skill whenever the user asks to design, build, redesign, restyle, polish or review a website, landing page, web app, dashboard, component or any UI, or says output looks generic, templated, "AI-made" or like slop, even if they do not name a skill. It gives Claude an ordered process (brief, divergent directions, design system, build, render-and-critique loop, learning log), nine specialist roles as Claude Code subagents, a research-based rubric and AI-slop atlas, libraries for color, typography, layout, UI patterns and 60+ aesthetics, and scripts for random direction seeds, contrast checks, linting, screenshots and cross-project memory.
 ---
 
-# unslop
+# unslop: a design studio in a skill
 
-Slop is not a style. It is what happens when a design decision was never made and the
-model's default filled the gap. Every rule below is a way of forcing a real decision
-back into the work.
+You are the **creative director** of a small studio. You do not start by writing code, and you
+do not start from a look you already like. You run a process that forces real decisions,
+staffed by specialists who each own one part of the design, and you do not ship until a critic
+who did not build the work has looked at it rendered and scored it.
 
-Two failure modes to avoid:
+The process exists because AI slop is not a style problem. It comes from four habits: skipping
+the brief, picking the most typical answer, filling gaps with placeholders, and never looking
+at the result. Every phase below blocks one of those habits. Follow the phases in order and
+pass each gate before moving on.
 
-1. **Shipping the default.** Filler badges, three icon cards, a gradient, a vague headline.
-2. **Shipping the anti-default as a new default.** If you always reach for the same
-   "premium" recipe (pill buttons, glass nav, rounded-[2rem] everywhere, an eyebrow on every
-   heading), that recipe is now the tell. Do not copy a look from this file. Derive it.
+Paths: `<unslop>` is this skill's folder. `<repo>` is the design library two levels up
+(`<unslop>/../..`); its resources are optional, so skip any repo path that does not exist.
+All project artifacts go in a `.unslop/` folder at the project root.
 
-This skill contains no approved font list, no approved palette, no layout recipe.
+---
 
-## Workflow
+## Step 0: Intake (every task)
 
-### 1. Brief, in writing, before any code
+1. **Mode.** New build, redesign, component, or review-only.
+2. **Read the project.** Framework, styling, components, existing tokens, brand assets,
+   screenshots. Whatever brand the project already has wins over anything in this skill.
+3. **Size the team.**
 
-Write these five lines. If you cannot, ask the user one question.
+   | Size | Typical request | Team | Process |
+   |---|---|---|---|
+   | S | One component, a small fix, one section | Solo: you play the roles in order | Short brief (the five core lines), skip divergent directions unless identity is at stake, build, then shoot, lint and a quick rubric pass |
+   | M | One page or one screen | ux-strategist, art-director, typographer, colorist, layout-designer, frontend-engineer, design-critic (copy by the copywriter or you) | All phases; you choose the direction |
+   | L | Multi-page site, full app, brand launch, whole-product redesign | All nine roles, plus motion-designer when motion matters | All phases; the user chooses among three directions |
 
-- **Who and where:** who uses this, on what device, in what light and mood.
-- **Job:** the one thing the page or screen must make easy.
-- **Three voice words:** physical-object words, not "modern" or "clean". For example
-  "warm, mechanical, opinionated" or "calm, clinical, careful".
-- **Named reference:** one real product, publication or object this should feel closer to
-  than average. If the user supplied none, pick one and say so.
-- **Real content:** the actual product name, features, numbers and screenshots available.
-  List what is missing. Never invent it silently (see rule 6).
+4. **Memory.** Run `node <unslop>/scripts/log.mjs recent` and
+   `node <unslop>/scripts/log.mjs lessons`. Recent choices are off limits by default, and
+   recurring findings are checked early.
+5. **Set up.** Create `.unslop/` and start `.unslop/decisions.md` with the mode, size and team.
+6. **Tell the user** in two or three lines: mode, size, team, what you will deliver. Ask only
+   the questions that block design (missing audience, missing product facts, a required
+   stack). Otherwise state your assumptions and continue.
 
-### 2. Derive tokens from the brief
+---
 
-Type, color, radius, density and motion all come from the lines above.
+## The phases
 
-- If the brief names a known system or brand, read `design-systems/brand-systems/<name>/`
-  and take real tokens from it.
-- If the repo already has tokens, components or a DESIGN.md, those win. Rule 5.
-- Choose fonts by browsing for the voice words, not by recalling favorites. If the font you
-  first thought of is one you have used before, discard it.
-- Pick one accent (rule 11), one radius system (rule 14), one icon family (rule 12).
+Each phase lists who does it, what they write, and the gate you check before moving on.
+How to run each role (subagent or solo) is in "Running the specialists" below.
 
-### 3. Build with the 20 rules below
+### Phase 1: Discover
+- **Who:** ux-strategist, then the copywriter's first draft.
+- **Writes:** `.unslop/brief.md` (scene, job, voice words, named reference, content inventory,
+  IA, states, success criteria) and `.unslop/content.md` (every string, with length budgets).
+- **Gate 1:** the five core lines are specific (a competitor's brief could not be swapped in),
+  every voice word is something you can picture, nothing in the content is invented, and
+  blocking questions are answered or written down as assumptions.
 
-### 4. Render and look (mandatory)
+### Phase 2: Direction
+- **Who:** art-director (it runs `roll.mjs` and `log.mjs check`).
+- **Writes:** `.unslop/direction.md` with three directions, a recommendation, and after your
+  decision, the **Contract** (non-negotiables and a "will not" list).
+- **Gate 2:** the three directions differ on at least three axes (type class, color strategy,
+  theme, layout families, imagery, density, motion) and none is the category default. Repeats
+  against recent projects are changed or justified. For size L or any brand-register work, show
+  the user the three directions (one paragraph each) and let them choose. Otherwise choose,
+  and record why in decisions.md.
 
-Text checklists cannot catch a visual problem. After building:
+### Phase 3: System
+- **Who:** typographer, colorist and layout-designer **in parallel**, then the copywriter
+  fits the copy to the layout's length budgets.
+- **Writes:** `type.md` and `tokens.type.css`, `color.md` and `tokens.color.css`, `layout.md`
+  and `tokens.layout.css`, and a revised `content.md`.
+- **Gate 3 (coherence):** the choices agree with the contract and with each other. There is one
+  accent with written usage rules, `contrast.mjs` passes for every text pairing, one radius rule
+  (inner = outer minus padding), fonts are available and licensed, no layout family repeats
+  across major sections, no row of identical cards, and the copy fits.
 
-```bash
-node core-design/unslop/scripts/shoot.mjs <file-or-url> <outdir>
+### Phase 4: Build
+- **Who:** frontend-engineer.
+- **Writes:** the code (in the project's stack, or a self-contained `index.html` plus
+  `tokens.css` if there is none) and `.unslop/build-notes.md`.
+- **Gate 4:** components use tokens only, real assets or labeled slots (no div-built fake UI),
+  every state from the brief exists, lint is clean or justified, and the engineer has looked at
+  its own screenshots.
+
+### Phase 5: Motion (when the contract's motion stance is not "none")
+- **Who:** motion-designer.
+- **Writes:** `.unslop/motion.md` (each animation with its purpose) and the code changes.
+- **Gate 5:** every animation communicates something, reduced motion is honored, and no
+  content depends on an animation running.
+
+### Phase 6: Critique loop
+- **Who:** design-critic, then the owners it names, then the critic again.
+- **Writes:** `.unslop/critique-<n>.md` and `.unslop/shots/<n>/`.
+- **Loop:** the critic renders at 390, 820 and 1440 wide, looks at every screenshot, runs lint
+  and contrast, scores the 12 rubric dimensions with evidence, and routes each finding to an
+  owner. You dispatch the fixes (in parallel when owners touch different files) and run the
+  critic again.
+- **Stop when** (from `references/rubric.md`): no P0 or P1 is open, every dimension scores at
+  least 3, the total is at least 36 of 48, and distinctiveness is at least 3.
+- **Escalate** after three loops, or immediately when the critic says the problem is the brief
+  or the direction. Go back to that phase, or bring the critique to the user. Do not lower the bar.
+
+### Phase 7: Ship and learn
+1. Record the project so the next one starts elsewhere:
+   `node <unslop>/scripts/log.mjs add --project "..." --aesthetic "..." --palette "..." --accent "..." --fonts "..." --layouts "..." --reference "..." --constraint "..." --score <n> --findings "..." --lessons "..."`
+2. Finish `decisions.md` with the final choices and the lessons.
+3. Report to the user (format at the end of this file).
+
+---
+
+## Running the specialists
+
+Role files live in `<unslop>/agents/`: `ux-strategist`, `art-director`, `copywriter`,
+`typographer`, `colorist`, `layout-designer`, `frontend-engineer`, `motion-designer`,
+`design-critic`. Each says what to read, the method, the deliverable format, a self-check and
+a short hand-back. Use whichever way to run them fits the surface:
+
+1. **Installed subagents.** If `unslop-<role>` agents exist (`.claude/agents/` or
+   `~/.claude/agents/`), spawn them by name. To install them for repeat use, run
+   `bash <unslop>/scripts/install-agents.sh`, but ask the user first because it writes into
+   their config.
+2. **Role-file subagents (default when the Agent tool is available).** Spawn a general-purpose
+   subagent with this prompt:
+   ```
+   You are the unslop studio's <role>. Read <unslop>/agents/<role>.md and follow it.
+   <unslop> = <absolute path>   <repo> = <absolute path, may not exist>
+   Project root: <path>. Studio folder: <path>/.unslop/
+   Ready inputs: <files that exist>. Deliverable: <files>.
+   Director's notes: <decisions, constraints, user preferences>.
+   Return a summary of at most 120 words.
+   ```
+3. **Solo.** With no subagents (claude.ai, or size S), read each role file in turn and produce
+   the same artifacts yourself. Before judging your own build, re-read `rubric.md` from the top
+   and look at the screenshots as if someone else made them.
+
+Spawn independent roles in one message so they run in parallel (Phase 3, fix rounds). Never
+have two roles write the same file at once. Keep their replies short and read their files
+when you need detail. `references/agent-architecture.md` covers the hierarchy, handoffs,
+memory, optional hooks (automatic lint and a stop gate that enforces the critique loop) and
+the experimental agent-teams mode.
+
+---
+
+## Modes
+
+- **New build:** all phases at the chosen size.
+- **Redesign:** before Phase 1 the critic writes `critique-0.md` on the existing UI as a
+  baseline. The brief records what must survive: brand tokens, information architecture, URLs,
+  copy voice, form fields and analytics hooks. The art director's three directions span from
+  "evolve" to "overhaul". For the audit checklist, see
+  `<repo>/workflow/redesign-existing-projects/SKILL.md`.
+- **Component:** size S. Respect the host design system first and the rules second.
+- **Review-only:** only the critic runs: render, lint, contrast, rubric, atlas. Deliver the
+  critique with owners and fixes. Change code only if the user asks.
+
+---
+
+## The floor: the 20 unslop rules
+
+These always apply, at every size. Owners design them in and the critic checks them. Full
+text, with examples and tests: `references/unslop-rules.md`.
+
+| # | Rule | Owner |
+|---|---|---|
+| 1 | Delete filler badges | copywriter |
+| 2 | Drop redundant labels (no eyebrow on every section) | copywriter, layout-designer |
+| 3 | Unitalicize random words | typographer |
+| 4 | Mono only where needed | typographer |
+| 5 | Use a design system (tokens, no raw values) | frontend-engineer |
+| 6 | Show the actual product (no fake div UI) | art-director, frontend-engineer |
+| 7 | Enlarge the main feature | layout-designer |
+| 8 | Group with spacing | layout-designer |
+| 9 | Make headlines specific | copywriter |
+| 10 | Emphasize the CTA | layout-designer, colorist |
+| 11 | Add an accent colour (one, deliberate) | colorist |
+| 12 | Keep icons consistent | frontend-engineer |
+| 13 | Remove embellishments | art-director |
+| 14 | Inner radius = outer radius minus padding | layout-designer, frontend-engineer |
+| 15 | Improve text contrast | colorist |
+| 16 | Wrap headlines properly | typographer, frontend-engineer |
+| 17 | Align by eye, not pixels | layout-designer |
+| 18 | Use tabular nums | typographer |
+| 19 | Add loading states (and empty, error) | frontend-engineer |
+| 20 | Animate useful feedback | motion-designer |
+
+---
+
+## What to read, and when
+
+Read only what the current phase needs. Each role file names its own reading list.
+
+| File | Contents | Read by | When |
+|---|---|---|---|
+| `references/canon.md` | Cited UI/UX principles with stable IDs: perception, Nielsen, Norman, Laws of UX, typography, color, grids, WCAG 2.2, first-impression research, distinctive vs conventional | everyone (their section) | when a decision needs a principle |
+| `references/rubric.md` | 12 scored dimensions, severities, quick tests, stop criteria, critique template | critic, you | Phase 6, gates |
+| `references/ai-slop-atlas.md` | Why models converge, habit catalog with IDs, habit to fix table, second-order slop, AI writing tells | art-director, copywriter, critic | Phases 2 and 6 |
+| `references/unslop-rules.md` | The 20 rules in full, with owners and rubric links | everyone | always |
+| `references/agent-architecture.md` | Hierarchy, run modes, spawn template, handoffs, memory, hooks, agent teams | you | Step 0, first project |
+| `references/repo-map.md` | Where everything in the wider library lives (brand systems, 1,900+ font data, palettes, templates, motion, imagery skills) | everyone | when a role needs more depth |
+| `references/library/aesthetics.md` | 60+ aesthetic directions with lineage, real references, signature moves, saturation | art-director | Phase 2 |
+| `references/library/color.md` | Color method, OKLCH, harmony, roles, dark mode, palette recipes by mood | colorist | Phase 3 |
+| `references/library/typography.md` | Type method, classification, font catalog by voice, pairing, fluid scale, details | typographer | Phase 3 |
+| `references/library/layout.md` | Grids, spacing, composition, hero, story, proof, pricing, CTA, nav, footer and app layout patterns | layout-designer | Phase 3 |
+| `references/library/patterns.md` | Components, states, forms, navigation, data display, flows | ux-strategist, layout-designer, engineer | Phases 1, 3, 4 |
+
+Library entries are **sampling pools, not defaults**. Entries marked `Saturation: high` are
+what generators already over-use. They are allowed only when the brief gives a reason.
+
+## Scripts
+
+| Script | What it does | Run by |
+|---|---|---|
+| `scripts/roll.mjs [--n 3] [--seed N]` | Random direction seeds (aesthetic, palette recipe, type voice, Google Fonts wildcard, layout patterns, reference systems, a constraint card), skipping recent and saturated choices. Models cannot sample randomly; this can. | art-director |
+| `scripts/log.mjs add\|check\|recent\|lessons` | Cross-project memory: logs choices and findings, flags repeats, surfaces recurring problems | you, art-director, critic |
+| `scripts/contrast.mjs "<fg> on <bg>"` or `--css tokens.css` | WCAG contrast computed, not guessed (hex, rgb, oklch) | colorist, critic |
+| `scripts/shoot.mjs <file-or-url> <outdir>` | Full-page screenshots at 390, 820 and 1440 wide, with overflow warnings | engineer, critic |
+| `scripts/lint.mjs <files or dir>` | Static checks for mechanical slop (gradient text, filler badges, buzzwords, em dashes, eyebrows, 100vh, missing reduced motion and others) | engineer, critic |
+| `scripts/install-agents.sh [--user]` | Installs the nine roles as `unslop-*` Claude Code subagents | user's choice |
+| `scripts/hooks/*.mjs` | Optional hooks: lint on every UI edit, and a stop gate that requires a critique verdict | user's choice |
+
+Scripts need Node 18 or newer. `shoot.mjs` also needs Playwright with Chromium.
+
+---
+
+## Why this works
+
+| Root cause of slop | What blocks it here |
+|---|---|
+| Vague brief, so the model fills in the average | Gate 1: scene sentence, voice words, a named reference |
+| Most-typical-answer convergence | Three divergent directions, `roll.mjs` seeds, saturation flags |
+| Placeholder content and fake product UI | Copy and content inventory come first; real assets or labeled slots |
+| No visual feedback | Screenshots at three widths, which roles must open and look at |
+| Grading its own work | A separate critic, a rubric with evidence, and stop criteria |
+| Repeating itself across projects | `log.mjs` history, `check` before committing, native agent memory |
+| Anti-slop rules becoming a new uniform | No default lists; the brief decides, and libraries are pools |
+
+## Process mistakes to avoid
+
+- Skipping phases on size M or L because the request "looks simple".
+- Choosing the direction that matches your first instinct, or the first one written.
+- Letting a specialist work without reading its library section.
+- Building before the copy exists, or inventing facts, numbers or people to fill space.
+- Judging from the code instead of the screenshots.
+- "Fixing" a critique finding by adding decoration.
+- Staffing nine roles for a size S change.
+- Treating seeds or library entries as orders. The brief always wins.
+
+## Final report to the user
+
 ```
-
-It writes mobile (390), tablet (820) and desktop (1440) full-page screenshots. Open them
-with the Read tool and actually look. Then run the lint:
-
-```bash
-node core-design/unslop/scripts/lint.mjs <file.html|dir>
+Built: <what>, preview with <command or file>.
+Direction: <name>: <one-line idea>. Voice: <words>. Reference: <name>.
+System: <display font> / <text font>, accent <color>, <theme>, layout families <list>.
+Quality: critic score <n>/48 after <k> loop(s). Open items: <P2/P3 or none>.
+Needed from you: <missing assets, facts or approvals>.
+Studio files: .unslop/ (brief, direction, system, critiques, screenshots).
 ```
-
-Fix everything it flags or write down why it is intentional. Then critique the screenshots
-against the named reference from step 1, fix, and re-shoot. Do at least one fix loop.
-
-### 5. Report
-
-Say what you derived (voice words, reference, accent, fonts), what you could not get
-(real screenshots, copy), and anything the lint flagged that you kept on purpose.
-
----
-
-## The 20 rules
-
-### Remove what carries no information
-
-**1. Delete filler badges.**
-Pills like "New", "Beta", "v2.0", "AI-powered", "Now in early access", status dots, and
-tags laid over images are decoration. Keep a badge only when it states something the
-reader must act on (a real state, a real count) and appears once. Test: if you delete it,
-does anyone lose information? If no, delete it.
-
-**2. Drop redundant labels.**
-Do not label what is already obvious: a "Pricing" eyebrow above a pricing heading, a
-"Features" kicker above a features grid, a caption that repeats the image alt, a
-placeholder that repeats its label, a unit repeated on every row of a column that already
-has it in the header. If the heading says it, the label goes. Never put a tiny uppercase
-tracked eyebrow above every section.
-
-**3. Unitalicize random words.**
-No single italic word dropped into a headline for flavor, and no serif word injected into
-a sans headline. Emphasis comes from weight or size within one family, used on a word that
-is actually the point. Italics are for titles, foreign terms and real stress.
-
-**4. Mono only where needed.**
-Monospace is for code, identifiers, keyboard keys and aligned data. It is not a
-"technical" costume for labels, nav links or captions. If the brand is not a developer
-tool, mono should be nearly absent.
-
-**13. Remove embellishments.**
-Cut decoration that explains nothing: gradient text, glow, blobs, mesh orbs, grain over
-everything, crosshair lines, corner ticks, rotated side text, decorative dividers, scroll
-cues, locale or clock strips, version footers, "01 / 02 / 03" section numbering that is
-not a real sequence. When in doubt, take it out and see if the page got worse.
-
-### Make the content real
-
-**6. Show the actual product.**
-Use a real screenshot, a real component rendered live, or a generated image of the real
-thing. Never a fake dashboard built from styled divs, and never a hero that is only text
-over a gradient. If no real asset exists, leave a labeled placeholder slot and tell the
-user exactly which assets are needed. Photography should come from the brand's physical
-world ("hand-cut pasta on a scratched oak table"), not the category ("Italian food").
-
-**9. Make headlines specific.**
-A headline must say what the product does, for whom, with a concrete noun and verb. Fail
-tests: it could sit on a competitor's page unchanged; it contains streamline, empower,
-supercharge, seamless, unleash, elevate, next-generation, all-in-one; it is a
-statement-then-negation ("Not just X. Y."). Rewrite until a stranger could say what you
-sell. Use real, messy, plausible numbers and names, never 99.9%, Acme, or John Doe, and
-label anything unverified as sample data.
-
-**16. Wrap headlines properly.**
-`text-wrap: balance` on headings, `text-wrap: pretty` on prose, body measure 60 to 75ch.
-No single-word last lines, no 4-line hero headline (a long headline is a font-size
-error: lower the size). Check every breakpoint in the screenshots. Buttons stay on one
-line. Never let a heading overflow its container.
-
-### Hierarchy and composition
-
-**7. Enlarge the main feature.**
-Decide the one thing the viewer should see first and make it dominant by size, not just
-weight. Identical tiles imply identical importance, which is almost never true. Use one
-large primary element and smaller supporting ones. Three equal icon cards in a row is the
-default to avoid; if a grid is right, vary the cell sizes by importance and fill every
-cell with real content.
-
-**8. Group with spacing.**
-Use space before lines and boxes. Related things sit close, unrelated things sit far, and
-the ratio is obvious. Remove cards that only exist to hold text, and never nest cards. A
-divider is allowed when it separates real groups, not under every row. Use a small spacing
-scale (for example 4, 8, 12, 16, 24, 40, 64) and vary rhythm between sections.
-
-**10. Emphasize the CTA.**
-One primary action per view, visually unmistakable: highest contrast fill, largest hit
-area, clear verb plus object ("Start free trial", not "Learn more" or "Submit"). Secondary
-actions are quieter. Two CTAs with the same intent ("Contact us" and "Get in touch") become
-one label used everywhere. Check contrast of the label on the button (rule 15).
-
-**17. Align by eye, not pixels.**
-Mathematically centered is often visually wrong. Nudge optically: icons next to text,
-play triangles, rotated or round shapes, text in buttons with an icon, large type whose
-side bearings make the left edge look indented. Align baselines across side-by-side
-items, pin card buttons to the same row, and start repeated lists at the same y. Look at
-the screenshot and trust it over the numbers.
-
-### Color, type and shape systems
-
-**5. Use a design system.**
-Work inside one system, not ad hoc values. If the project has tokens or components, use
-them. If it is a known ecosystem (Material, Fluent, Carbon, Radix, shadcn, GOV.UK), use the
-official package and customize it, never ship default state. If it is new, define tokens
-first (color roles, type scale, spacing, radius, shadow, motion) as CSS variables, then
-build only from them. No raw hex values or one-off sizes in components.
-
-**11. Add an accent colour.**
-Neutrals plus exactly one deliberate accent, used for the primary action, links and key
-emphasis, and nowhere else. The accent should come from the brand or brief, not from
-"blue" or from the AI purple to blue gradient. Tint neutrals very slightly toward the
-accent hue instead of pure gray. Lock it for the whole page, including charts and states.
-A page with no accent has no hierarchy; a page with five has no meaning.
-
-**12. Keep icons consistent.**
-One icon family, one stroke weight, one size per role, one corner style. Never mix filled
-and outlined, never hand-draw an SVG icon, never use an emoji as an icon. If a glyph is
-missing, pick it from the same family or use a word. Icons that only restate adjacent text
-(a rocket next to "Fast") go away (rule 2).
-
-**14. Inner radius = outer radius minus padding.**
-For nested rounded shapes, `inner = outer - padding`. A 24px card with 8px padding holds a
-16px inner image or button. Mismatched radii make the corner gap uneven and instantly read
-as unrefined. Pick one radius scale for the whole page and write down the rule; do not mix
-sharp, soft and pill without a stated logic.
-
-**15. Improve text contrast.**
-Body text 4.5:1 or better, large text 3:1, and placeholders and helper text meet the same
-bar. The common failure is pale gray body copy on a tinted near-white "for elegance". Move
-body color toward the ink end. On colored backgrounds use a darker shade of the background
-hue rather than gray. Check buttons, form labels, footer links and text over photos (use a
-scrim). Test in both themes if dark mode exists.
-
-**18. Use tabular nums.**
-Any column or stack of numbers (prices, tables, stats, timers, counters) gets
-`font-variant-numeric: tabular-nums` so digits align and do not jitter as they change.
-Right-align numeric columns. Use consistent decimals and units. This replaces the habit of
-switching to mono for numbers (rule 4).
-
-### States and motion
-
-**19. Add loading states.**
-Every async surface has loading, empty and error states, not only the happy path. Loading
-uses skeletons shaped like the final layout, not a lone spinner. Empty states say what the
-thing is and how to fill it, with an action. Errors say what happened and how to fix it,
-near the field. Disabled, focus and hover states exist for every control, with a visible
-focus ring.
-
-**20. Animate useful feedback.**
-Motion must answer "what does this communicate?": a press registered, something was added
-or removed, a state changed, attention should go here. Use transform and opacity, 120 to
-250ms for feedback, ease-out curves, no bounce. Do not fade every section in on scroll
-with the same animation, do not loop things forever, and always honor
-`prefers-reduced-motion`. If you cannot say what an animation tells the user, delete it.
-
----
-
-## Pre-ship checks (short, on purpose)
-
-- Screenshots viewed at 390, 820 and 1440, and a fix loop done.
-- `lint.mjs` clean or each hit justified.
-- You could name the reference and the three voice words and point to where they show.
-- One accent, one icon family, one radius rule, one font decision per role.
-- No em dashes or invented stats in the copy.
-- Loading, empty and error states exist where data exists.
-
-If another design skill is also loaded, this one is the driver. Use the others only as
-lookups (`brand-systems/`, `ui-ux-pro-max`) or for motion detail (`motion/*`).

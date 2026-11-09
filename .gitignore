@@ -1,0 +1,4 @@
+# skill-creator eval workspace (large screenshots, run transcripts)
+core-design/unslop-workspace/
+__pycache__/
+*.pyc

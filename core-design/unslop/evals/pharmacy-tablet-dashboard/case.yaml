@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: pharmacy-tablet-dashboard
+expected_outcome: |
+  A single-screen product UI for reconciling controlled-substance counts across six wards that is dense but scannable on a tablet, makes discrepancies obvious without relying on color alone, uses tabular figures, includes loading, empty and error states plus an acknowledge-with-note flow, and labels sample data as sample.

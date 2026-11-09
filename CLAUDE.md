@@ -26,6 +26,7 @@ design task comes in is to **find the right skill, load its `SKILL.md`, and foll
 
 | The task is… | Load |
 |---|---|
+| Any UI build, redesign or "this looks AI-made" fix (default driver) | `core-design/unslop` (20 unslop rules + render-and-lint loop) |
 | Build a new frontend/landing/app UI from scratch | `core-design/frontend-design` (lighter) or `core-design/design-taste-frontend` (anti-slop, brief-driven) |
 | A full design pass: design **and** critique/polish/harden/animate | `core-design/impeccable` (flagship, lifecycle) |
 | Output keeps looking generic/"AI-slop" | `core-design/high-end-visual-design` (banned-defaults ruleset) |

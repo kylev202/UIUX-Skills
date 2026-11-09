@@ -17,6 +17,7 @@ works independently.
 
 | Skill | Use when |
 |---|---|
+| `unslop` | **Default driver for UI work.** 20 concrete unslop rules (remove filler badges, specific headlines, one accent, consistent icons, nested radii, tabular nums, loading states, useful motion), derives the look from the brief instead of a recipe, and verifies with screenshots plus a lint script. |
 | `impeccable` | The flagship, full-lifecycle skill: design, redesign, critique, audit, polish, animate, harden any frontend UI. Has 27 reference docs + scripts. Default choice for serious UI work. |
 | `frontend-design` | Anthropic's official skill for building distinctive, production-grade interfaces from scratch. Lighter than impeccable; good default for greenfield builds. |
 | `design-taste-frontend` | Anti-slop taste skill: infers design direction from the brief, audit-first on redesigns. Best for landing pages and portfolios that must not look templated. |

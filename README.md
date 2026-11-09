@@ -20,14 +20,12 @@ works independently.
 | `unslop` | **Default driver for UI work.** Runs design as a studio: you are the creative director; nine specialists (UX strategist, art director, copywriter, typographer, colorist, layout designer, frontend engineer, motion designer, design critic) ship as Claude Code subagents. Ordered phases with gates, three divergent directions with random seeds, a render-and-critique loop scored on a research-based rubric, a cross-project design log, the 20 unslop rules as the floor, and libraries for color, typography, layout, UI patterns and 60+ aesthetics. |
 | `impeccable` | The flagship, full-lifecycle skill: design, redesign, critique, audit, polish, animate, harden any frontend UI. Has 27 reference docs + scripts. Default choice for serious UI work. |
 | `frontend-design` | Anthropic's official skill for building distinctive, production-grade interfaces from scratch. Lighter than impeccable; good default for greenfield builds. |
-| `design-taste-frontend` | Anti-slop taste skill: infers design direction from the brief, audit-first on redesigns. Best for landing pages and portfolios that must not look templated. |
-| `high-end-visual-design` | Strict "banned defaults" ruleset (fonts, shadows, layouts, motion) that forces premium agency-level output. Use when output keeps looking generic. |
 | `web-design-guidelines` | Vercel's Web Interface Guidelines — review/audit UI code for compliance (layout, a11y, motion, typography). Review-only. |
 | `critique` | Fast 5-dimension expert design review of any HTML artifact. Use as a scoring gate. |
 | `ui-ux-pro-max` | Searchable design database: 50+ styles, 161 palettes, 57 font pairings, UX guidelines across 10 stacks. Use as a reference/lookup engine, not a workflow. |
 | `reference-design-contract` | Turns vague taste ("make it feel like this" + screenshots/URLs) into an explicit design contract before building. |
 
-**Overlap rule:** for a build → `frontend-design` or `design-taste-frontend`; for a
+**Overlap rule:** for a build → `unslop` (default) or `frontend-design`; for a
 full design pass or redesign → `impeccable`; for review only → `web-design-guidelines`
 or `critique`; for lookups → `ui-ux-pro-max`.
 
@@ -35,7 +33,6 @@ or `critique`; for lookups → `ui-ux-pro-max`.
 
 | Skill | Aesthetic |
 |---|---|
-| `minimalist-ui` | Clean editorial, warm monochrome, flat bento grids, no gradients/shadows. |
 | `industrial-brutalist-ui` | Swiss print × military terminal: rigid grids, extreme type contrast, analog degradation. |
 
 (More aesthetics live as deck/prototype templates: `templates/web-prototype-taste-*`,
@@ -71,7 +68,6 @@ or `critique`; for lookups → `ui-ux-pro-max`.
 
 | Skill | Use when |
 |---|---|
-| `redesign-existing-projects` | Upgrade an existing site/app to premium quality without breaking functionality. Audit → fix. |
 | `image-to-code` | Generate design images first, analyze them, then implement the site to match. |
 | `research-decision-room` | Synthesize messy user research (notes, tickets, surveys) into decisions. |
 
@@ -118,3 +114,7 @@ theme-variant wrappers (themes already ship inside `templates/html-ppt`),
 API-dependent generation wrappers (fal.ai, Venice, Replicate, Sora, MiniMax…),
 brand one-offs, off-topic utilities, and per-brand translations of the
 `brand-systems` docs. Delete the folder once you're confident nothing is missed.
+
+The four overlapping taste skills (`design-taste-frontend`, `high-end-visual-design`,
+`minimalist-ui`, `redesign-existing-projects`) were retired to `_archive/retired/` in
+November 2026: their rules contradicted each other, and `core-design/unslop` replaces them.

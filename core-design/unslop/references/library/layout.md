@@ -148,7 +148,7 @@ Token names are fixed so every role can find them; the values are examples to re
 ```
 
 - **Radius pair.** Declare `--radius-inner` on the element that sets the padding, as above: a custom property computed on `:root` cannot see a `--pad` changed lower in the tree. `max(0px, ...)` stops a negative radius when the padding exceeds the outer radius. One level deeper, the inner radius becomes the next outer.
-- **Layers.** Use role names, never raw numbers (row 15 of `core-design/ui-ux-pro-max/data/ux-guidelines.csv`; section 6.F of `core-design/design-taste-frontend/SKILL.md`); roles 100 apart leave room to insert one later. Components that stack their own children set `isolation: isolate`, so internal values never compete with the page. A `<dialog>` opened with `showModal()` and any `popover` render in the top layer above every z-index, so `--z-modal` and `--z-tooltip` serve fallbacks only, and a toast that must show over an open modal has to be a popover itself.
+- **Layers.** Use role names, never raw numbers (row 15 of `core-design/ui-ux-pro-max/data/ux-guidelines.csv`; section 6.F of `_archive/retired/design-taste-frontend/SKILL.md`); roles 100 apart leave room to insert one later. Components that stack their own children set `isolation: isolate`, so internal values never compete with the page. A `<dialog>` opened with `showModal()` and any `popover` render in the top layer above every z-index, so `--z-modal` and `--z-tooltip` serve fallbacks only, and a toast that must show over an open modal has to be a popover itself.
 
 ## Composition
 
@@ -238,12 +238,12 @@ Token names are fixed so every role can find them; the values are examples to re
 - **Saturation:** low
 ### Ranked bento
 - **Use when:** 4-7 features of different importance, each with its own real visual (UI crop, photo, small live component).
-- **Build:** a 6-column modular grid with cell size by rank, exactly as many cells as items (cell count rule in `core-design/design-taste-frontend/SKILL.md` section 4.7), at least two image cells, nested radii by rule 14.
+- **Build:** a 6-column modular grid with cell size by rank, exactly as many cells as items (cell count rule in `_archive/retired/design-taste-frontend/SKILL.md` section 4.7), at least two image cells, nested radii by rule 14.
 - **Slop risk:** the current template look: equal rounded tiles on off-white, icon plus text in each. Still legitimate when size encodes rank and every cell shows a real thing.
 - **Saturation:** high
 ### Alternating media rows
 - **Use when:** two features that each need a real screenshot and a paragraph of explanation.
-- **Build:** at most two consecutive rows (zigzag cap in `core-design/design-taste-frontend/SKILL.md` section 4.7), a different media size per row, text tops aligned with media tops.
+- **Build:** at most two consecutive rows (zigzag cap in `_archive/retired/design-taste-frontend/SKILL.md` section 4.7), a different media size per row, text tops aligned with media tops.
 - **Slop risk:** four or more alternating rows, where attention ends at the second. Still legitimate for two rows broken up by a different family.
 - **Saturation:** high
 ### Sticky media with steps
@@ -269,7 +269,7 @@ Token names are fixed so every role can find them; the values are examples to re
 ### Grouped spec sheet
 - **Use when:** hardware, materials or technical products where specifications are the argument.
 - **Build:** 3-4 key specs as large values with units and a one-line reason each, the rest in 2-3 titled groups with one divider per group or behind a "Full specifications" disclosure.
-- **Slop risk:** a long table with a hairline under every row (`core-design/design-taste-frontend/SKILL.md` section 4.9); invented precision.
+- **Slop risk:** a long table with a hairline under every row (`_archive/retired/design-taste-frontend/SKILL.md` section 4.9); invented precision.
 - **Saturation:** low
 ### Comparison with the old way
 - **Use when:** visitors are switching from a known alternative and want concrete differences.
@@ -301,12 +301,12 @@ Token names are fixed so every role can find them; the values are examples to re
 
 ### Logo wall
 - **Use when:** the logos are real customers this audience recognizes, used with permission.
-- **Build:** one row of 5-8 single-color logos at optically equal size (match visual weight, not height) directly under the hero, logos only with no category labels (`core-design/design-taste-frontend/SKILL.md` section 4.8), light variants in dark mode.
+- **Build:** one row of 5-8 single-color logos at optically equal size (match visual weight, not height) directly under the hero, logos only with no category labels (`_archive/retired/design-taste-frontend/SKILL.md` section 4.8), light variants in dark mode.
 - **Slop risk:** walls of unknown or invented brands; a grayscale marquee scrolling forever (rule 20). Still legitimate with real, recognizable logos.
 - **Saturation:** high
 ### Quote beside its claim
 - **Use when:** one specific quote from a named person proves one specific claim.
-- **Build:** at most 3 lines of quote (`core-design/design-taste-frontend/SKILL.md` section 4.10), name, role and company, a real photo or none, placed in the section whose claim it proves.
+- **Build:** at most 3 lines of quote (`_archive/retired/design-taste-frontend/SKILL.md` section 4.10), name, role and company, a real photo or none, placed in the section whose claim it proves.
 - **Slop risk:** vague praise ("Game changer!"); first-name-only attribution; stock headshots.
 - **Saturation:** medium
 ### Review wall
@@ -390,7 +390,7 @@ Token names are fixed so every role can find them; the values are examples to re
 
 ### Inline top bar
 - **Use when:** a site or small app with 3-6 top-level destinations.
-- **Build:** 56-72px tall with the logo, inline links and one primary CTA on one line at 1024 (`core-design/design-taste-frontend/SKILL.md` section 4.7); `aria-current="page"` plus a visible current state; a menu button below the width where the links fit.
+- **Build:** 56-72px tall with the logo, inline links and one primary CTA on one line at 1024 (`_archive/retired/design-taste-frontend/SKILL.md` section 4.7); `aria-current="page"` plus a visible current state; a menu button below the width where the links fit.
 - **Slop risk:** vague labels ("Solutions", "Resources") over thin pages; two CTAs with the same intent.
 - **Saturation:** low
 ### Floating glass pill
@@ -499,7 +499,7 @@ Token names are fixed so every role can find them; the values are examples to re
 
 Families for the wireframe's FAMILY field: Statement (type-led, single column), Split (two columns with different jobs), Full-bleed media, Ranked grid (one large, several small), Peer grid (equal items such as logos or a gallery), List or table, Sequence (steps, sticky media, timeline), Interactive (demo, calculator, explorer), Proof (quote, case, stats), Form.
 
-- **How many.** A page with N sections uses at least half as many families, rounded up, so 8 sections need 4 or more (consistent with `core-design/design-taste-frontend/SKILL.md` section 4.7). Adjacent sections never share a family; Split appears at most twice per page and Peer grid at most once.
+- **How many.** A page with N sections uses at least half as many families, rounded up, so 8 sections need 4 or more (consistent with `_archive/retired/design-taste-frontend/SKILL.md` section 4.7). Adjacent sections never share a family; Split appears at most twice per page and Peer grid at most once.
 - **Widths rotate too.** At least one section breaks the content width (breakout or full bleed) and at least one sits at reading measure.
 - **The default order.** Hero, three features, logos, testimonials, pricing, FAQ, CTA band is the sequence encoded in rows 1 and 14 of `core-design/ui-ux-pro-max/data/landing.csv`, in `templates/saas-landing/SKILL.md` and in the rhythm notes of `templates/web-prototype/references/layouts.md`. Following it unchanged is what makes a page read as generated, so use those files for structure and markup, not for order.
 - **Breaking it.** Write the visitor's questions in the order this audience asks them (from the brief's who and job lines), order the sections by those questions, then fill in DEFAULT-ORDER MATCH. At 5 of 7 or more, change at least two decisions: move proof beside the claim it supports, fold features into a demo, answer FAQ items inline where each doubt arises, drop the closing band.
@@ -530,15 +530,15 @@ Families for the wireframe's FAMILY field: Statement (type-led, single column), 
 - `core-design/unslop/SKILL.md` (the 20 rules cited here by number) and `core-design/unslop/references/library/patterns.md` (component states, forms, data display and flows inside these layouts).
 - `core-design/impeccable/reference/layout.md`: spacing scale, hierarchy table, container query example, card-monotony fixes, hit-area recipe, density params.
 - `core-design/impeccable/reference/brand.md` and `core-design/impeccable/reference/product.md` (layout per register, saturated aesthetic lanes, imagery), `core-design/impeccable/reference/adapt.md` (rethinking a layout for another device instead of scaling it), `core-design/impeccable/reference/typeset.md` (vertical rhythm, measure, modular scale).
-- `core-design/design-taste-frontend/SKILL.md`: sections 4.3 (centered-hero bias), 4.7 (hero fit, nav height, eyebrow restraint, bento cell count, zigzag cap, family repetition), 4.9 (density, spec sheets), 4.10 (quotes), 6.F (z-index restraint) and 10 (pattern vocabulary).
-- `core-design/high-end-visual-design/SKILL.md` section 3.B: further layout archetypes to sample from, each with its mobile collapse.
+- `_archive/retired/design-taste-frontend/SKILL.md`: sections 4.3 (centered-hero bias), 4.7 (hero fit, nav height, eyebrow restraint, bento cell count, zigzag cap, family repetition), 4.9 (density, spec sheets), 4.10 (quotes), 6.F (z-index restraint) and 10 (pattern vocabulary).
+- `_archive/retired/high-end-visual-design/SKILL.md` section 3.B: further layout archetypes to sample from, each with its mobile collapse.
 - `core-design/ui-ux-pro-max/data/landing.csv`: 34 section orders with CTA placement; read it to see the expected order, then depart from it. `core-design/ui-ux-pro-max/data/products.csv` maps 161 product types to landing patterns, mostly Feature-Rich Showcase variants, so treat it as a list of conventions, not a decision. Query either with `python3 core-design/ui-ux-pro-max/scripts/search.py "<terms>" --domain landing` (or `--domain product`).
 - `design-systems/brand-systems/<brand>/DESIGN.md`: sections 5 (Layout Principles) and 8 (Responsive Behavior) show how a real system sets widths, grids and breakpoints.
-- `styles/minimalist-ui/SKILL.md` (flat asymmetric bento) and `styles/industrial-brutalist-ui/SKILL.md` section 5 (rigid modular grids, bimodal density): committed lanes, only when the brief names them.
+- `_archive/retired/minimalist-ui/SKILL.md` (flat asymmetric bento) and `styles/industrial-brutalist-ui/SKILL.md` section 5 (rigid modular grids, bimodal density): committed lanes, only when the brief names them.
 - `templates/web-prototype/references/layouts.md` (8 section skeletons), `templates/saas-landing/SKILL.md`, `templates/pricing-page/SKILL.md`, `templates/waitlist-page/SKILL.md`, `templates/faq-page/SKILL.md`, `templates/docs-page/SKILL.md`: markup starting points, reordered per the rotation rules.
 - `templates/dashboard/SKILL.md`, `templates/live-dashboard/references/layouts.md`, `templates/kanban-board/SKILL.md`, `templates/mobile-app/references/layouts.md` (6 screen archetypes): app layouts.
 - `templates/wireframe-greybox/SKILL.md` and `templates/wireframe-annotated/SKILL.md` render the text wireframe as a greybox when the user wants structure first; `image-direction/imagegen-frontend-web/SKILL.md` generates one reference image per section when assets are missing.
-- `workflow/redesign-existing-projects/SKILL.md`: changing the layout of a live site without breaking it.
+- `_archive/retired/redesign-existing-projects/SKILL.md`: changing the layout of a live site without breaking it.
 
 ## Sources
 

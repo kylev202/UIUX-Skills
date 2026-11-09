@@ -1,12 +1,14 @@
 # Repo map
 
+> Paths under `_archive/retired/` are retired skills kept as evidence and history. Read them as reference only; never run them as a skill.
+
 Where things live in this repo, what each holds, and which unslop role should open it when. Paths are from the repo root. Never open `_archive/`: it holds duplicates and stubs (see `CLAUDE.md`).
 
 ## Ground rules
 
 - `core-design/unslop/SKILL.md` drives. Everything below is a lookup or a source of structure; when a resource contradicts the 20 rules, the rules win. Do not load a second taste skill as a driver (`frontend-design`, `design-taste-frontend`, `high-end-visual-design` and `impeccable` overlap, per `CLAUDE.md`).
 - Open the smallest thing that answers the question: one brand folder, one CSV query, one reference doc. Grep long files before reading them.
-- Known conflicts: `styles/minimalist-ui/`, `styles/industrial-brutalist-ui/`, `templates/web-prototype-taste-*/`, `core-design/high-end-visual-design/` and `design-systems/brand-systems/atelier-zero/` hard-code eyebrow pills, mono metadata, ASCII ornament, global grain, scroll fades or italic-serif headline mixing (rules 2, 3, 4, 13, 20). Take their grids, scales and tokens, not those moves.
+- Known conflicts: `_archive/retired/minimalist-ui/`, `styles/industrial-brutalist-ui/`, `templates/web-prototype-taste-*/`, `_archive/retired/high-end-visual-design/` and `design-systems/brand-systems/atelier-zero/` hard-code eyebrow pills, mono metadata, ASCII ornament, global grain, scroll fades or italic-serif headline mixing (rules 2, 3, 4, 13, 20). Take their grids, scales and tokens, not those moves.
 - Verification, run by the frontend engineer and read by the critic:
   - `node core-design/unslop/scripts/shoot.mjs <file-or-url> <outdir>`: full-page Playwright screenshots at 390, 820 and 1440px, with a horizontal overflow warning.
   - `node core-design/unslop/scripts/lint.mjs <file.html|dir>`: regex checks for rules 1, 2, 9, 12-16, 18 and 20, plus em dashes, `100vh`, scroll listeners and more than five distinct radii; exits 1 on any finding.
@@ -60,7 +62,7 @@ python3 core-design/ui-ux-pro-max/scripts/search.py "<query>" --design-system [-
 
 - `core-design/impeccable/reference/layout.md`: fixing monotone spacing, weak hierarchy and identical card grids. Layout designer.
 - `core-design/impeccable/reference/adapt.md`: adapting a design to other screen sizes, devices and platforms. Layout designer and frontend engineer, before the 390 and 820 passes.
-- `core-design/design-taste-frontend/SKILL.md` (sections 2-4): the brief-to-design-system map, default architecture and layout engineering directives. Layout designer and frontend engineer.
+- `_archive/retired/design-taste-frontend/SKILL.md` (sections 2-4): the brief-to-design-system map, default architecture and layout engineering directives. Layout designer and frontend engineer.
 - `core-design/ui-ux-pro-max/data/landing.csv`: 34 landing patterns with section order and CTA placement. Query `--domain landing`. UX strategist, as structural options, not a recipe.
 - `templates/web-prototype/references/layouts.md` with `templates/web-prototype/assets/template.html`: section layouts and a seed page. Layout designer, for structure only.
 
@@ -72,7 +74,7 @@ python3 core-design/ui-ux-pro-max/scripts/search.py "<query>" --design-system [-
 - `core-design/impeccable/reference/onboard.md` and `clarify.md`: onboarding to first value, and rewriting unclear interface copy. UX strategist and copywriter.
 - `core-design/ui-ux-pro-max/data/ux-guidelines.csv` (99 rules across accessibility, forms, touch, navigation, animation) via `--domain ux`; `app-interface.csv` (30) via `--domain web`; `charts.csv` (25) via `--domain chart`; `icons.csv` (105 Phosphor entries) via `--domain icons`; `data/stacks/*.csv` via `--stack`. UX strategist and frontend engineer.
 - `core-design/ui-ux-pro-max/SKILL.md` (quick reference, priorities 1-10): checklist rules for contrast, touch targets, performance, forms and navigation. Frontend engineer.
-- `core-design/design-taste-frontend/SKILL.md` (Appendices A and B): install commands and canonical docs for Material Web, Fluent, Carbon, Radix, shadcn/ui, Primer, GOV.UK, USWDS, Atlassian, Bootstrap and Polaris. Frontend engineer, whenever rule 5 calls for an official package.
+- `_archive/retired/design-taste-frontend/SKILL.md` (Appendices A and B): install commands and canonical docs for Material Web, Fluent, Carbon, Radix, shadcn/ui, Primer, GOV.UK, USWDS, Atlassian, Bootstrap and Polaris. Frontend engineer, whenever rule 5 calls for an official package.
 - `workflow/research-decision-room/`: turning raw research into evidence-backed decisions. UX strategist, when the brief arrives with interviews, tickets or surveys.
 
 ## Aesthetics and styles
@@ -81,7 +83,7 @@ python3 core-design/ui-ux-pro-max/scripts/search.py "<query>" --design-system [-
 - `core-design/impeccable/reference/brand.md`: brand register, the two slop tests and the saturated lanes. Art director and creative director.
 - `core-design/ui-ux-pro-max/data/styles.csv`: 84 style rows (keywords, colors, effects, best for, do not use for, CSS keywords, checklist). Query `--domain style`. Art director, for implementation keywords after a direction is chosen; its accessibility and performance ratings are self-assessed.
 - `core-design/ui-ux-pro-max/data/products.csv`: 161 product types mapped to style recommendations. Art director, to see the category default to depart from.
-- `styles/minimalist-ui/` and `styles/industrial-brutalist-ui/`: two committed aesthetics (conflicts above).
+- `_archive/retired/minimalist-ui/` and `styles/industrial-brutalist-ui/`: two committed aesthetics (conflicts above).
 - `templates/web-prototype-taste-brutalist/`, `templates/web-prototype-taste-editorial/`, `templates/web-prototype-taste-soft/`: prototype skeletons per aesthetic, each with `example.html`.
 - `templates/html-ppt/assets/themes/`: 36 deck themes as CSS token files (bauhaus, swiss-grid, memphis-pop, vaporwave, y2k-chrome and more); `templates/html-ppt/references/themes.md` says when each fits. Art director, as palette and type references; they are built for slides.
 - `core-design/reference-design-contract/`: turns screenshots, URLs and vague taste into a DESIGN.md contract. Creative director and art director, when the user supplies references.
@@ -147,7 +149,7 @@ Who reads it: the art director, to study how a real system decides; the colorist
 - `core-design/web-design-guidelines/` with `references/guidelines.md` (pinned Vercel Web Interface Guidelines): findings in `file:line` form. Critic and frontend engineer.
 - `core-design/impeccable/reference/critique.md`, `audit.md`, `polish.md`, `distill.md`, `quieter.md`, `bolder.md`: design critique, technical audit, final polish, and passes for too much, too loud or too timid. Critic.
 - `motion/review-animations/`: motion review. Critic.
-- `workflow/redesign-existing-projects/`: audit checklist (typography, color, layout, states, content, components, icons, code) and fix priority for existing sites. Creative director, on redesigns.
+- `_archive/retired/redesign-existing-projects/`: audit checklist (typography, color, layout, states, content, components, icons, code) and fix priority for existing sites. Creative director, on redesigns.
 
 ## Artifacts
 

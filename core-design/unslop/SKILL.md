@@ -152,8 +152,7 @@ the experimental agent-teams mode.
 - **Redesign:** before Phase 1 the critic writes `critique-0.md` on the existing UI as a
   baseline. The brief records what must survive: brand tokens, information architecture, URLs,
   copy voice, form fields and analytics hooks. The art director's three directions span from
-  "evolve" to "overhaul". For the audit checklist, see
-  `<repo>/workflow/redesign-existing-projects/SKILL.md`.
+  "evolve" to "overhaul". The rubric and `references/ai-slop-atlas.md` are the audit checklist.
 - **Component:** size S. Respect the host design system first and the rules second.
 - **Review-only:** only the critic runs: render, lint, contrast, rubric, atlas. Deliver the
   critique with owners and fixes. Change code only if the user asks.

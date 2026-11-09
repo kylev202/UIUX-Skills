@@ -51,7 +51,7 @@ Families, for sampling across lineages (names match the `###` headings):
 
 **Reading an entry.** `Lineage` says where the look comes from. `Real references` are makers to study, not to copy. `Fits` ends with a `Fails:` clause. `Token sketch` gives classes and strategies, never exact fonts or hex values. `Slop risk` describes how generators fake the look and names the unslop rules it collides with. `Saturation` rates how often generators produce the look unprompted in 2024-2026 (`low` rare, `medium` common, `high` reads as AI on sight). `Repo resources` are paths from the repo root.
 
-**Repo caveats.** The one-word style folders in `design-systems/brand-systems/` (brutalism, editorial, glassmorphism, retro and similar) are thin: a palette, a font trio and generic rules, so treat them as starter tokens. Several repo skills hard-code moves the unslop rules reject, such as eyebrow pills, mono metadata, ASCII ornament, global grain and scroll fades: `styles/minimalist-ui/`, `styles/industrial-brutalist-ui/`, `templates/web-prototype-taste-brutalist/`, `templates/web-prototype-taste-editorial/`, `templates/web-prototype-taste-soft/`, `core-design/high-end-visual-design/`, `design-systems/brand-systems/atelier-zero/`. Take structure and tokens from them; unslop stays the driver.
+**Repo caveats.** The one-word style folders in `design-systems/brand-systems/` (brutalism, editorial, glassmorphism, retro and similar) are thin: a palette, a font trio and generic rules, so treat them as starter tokens. Several repo skills hard-code moves the unslop rules reject, such as eyebrow pills, mono metadata, ASCII ornament, global grain and scroll fades: `_archive/retired/minimalist-ui/`, `styles/industrial-brutalist-ui/`, `templates/web-prototype-taste-brutalist/`, `templates/web-prototype-taste-editorial/`, `templates/web-prototype-taste-soft/`, `_archive/retired/high-end-visual-design/`, `design-systems/brand-systems/atelier-zero/`. Take structure and tokens from them; unslop stays the driver.
 
 ## Catalog
 
@@ -205,7 +205,7 @@ Every entry is a `###` name followed by the same eight lines. Keep the format; a
 - **Token sketch:** Type class: serif display plus sans text; palette: warm neutral plus one accent; radius: small (4-8px); density: low.
 - **Slop risk:** It is the anti-default turned default: an italic serif word in the headline (rule 3), a tracked mono eyebrow on each section (rules 2 and 4), pale gray body text on beige (rule 15), no product shown (rule 6). Use it only with a written reason and change at least two of its moves.
 - **Saturation:** high
-- **Repo resources:** `styles/minimalist-ui/`, `templates/web-prototype-taste-editorial/`, `design-systems/brand-systems/warm-editorial/`, `design-systems/brand-systems/notion/`, `design-systems/brand-systems/claude/`, `core-design/impeccable/reference/brand.md`
+- **Repo resources:** `_archive/retired/minimalist-ui/`, `templates/web-prototype-taste-editorial/`, `design-systems/brand-systems/warm-editorial/`, `design-systems/brand-systems/notion/`, `design-systems/brand-systems/claude/`, `core-design/impeccable/reference/brand.md`
 
 ### Document-like
 - **Lineage:** The plain HTML document and the printed report: content first, browser defaults or close to them, from early academic pages to essay sites.
@@ -345,7 +345,7 @@ Every entry is a `###` name followed by the same eight lines. Keep the format; a
 - **Token sketch:** Type class: system sans with role-based sizes; palette: one brand seed generating tonal roles; radius: shape scale by component size; density: medium, adjustable.
 - **Slop risk:** Default Material (the baseline purple seed, untouched shapes) is the "default state" rule 5 forbids. Use the official package, seed it from the brand, and customize shapes and type roles.
 - **Saturation:** medium
-- **Repo resources:** `design-systems/brand-systems/material/`, `core-design/design-taste-frontend/SKILL.md` (section 2.A and Appendix A install commands), `core-design/ui-ux-pro-max/data/styles.csv` (row "Material You (MD3 Mobile)")
+- **Repo resources:** `design-systems/brand-systems/material/`, `_archive/retired/design-taste-frontend/SKILL.md` (section 2.A and Appendix A install commands), `core-design/ui-ux-pro-max/data/styles.csv` (row "Material You (MD3 Mobile)")
 
 ### Corporate Memphis
 - **Lineage:** Flat vector people with big limbs and small heads, spread across tech after Facebook introduced its Alegria illustration system, made by the studio Buck with illustrator Xoana Herrera, in 2017; named as a jab at the Memphis Group and widely criticized as featureless and interchangeable [S24].
@@ -365,7 +365,7 @@ Every entry is a `###` name followed by the same eight lines. Keep the format; a
 - **Token sketch:** Type class: neutral sans, medium weight minimum; palette: translucent neutral surfaces plus one accent, with solid fallbacks; radius: medium to large, concentric; density: low to medium.
 - **Slop risk:** A glass nav and glass cards on a purple-blue blob background is the 2024-2026 generator default, and blur erodes contrast (rule 15). Use glass only where content passes beneath it, provide solid fills under `prefers-reduced-transparency`, and test text contrast on the worst frame.
 - **Saturation:** high
-- **Repo resources:** `design-systems/brand-systems/glassmorphism/` (thin tokens), `templates/html-ppt/assets/themes/glassmorphism.css`, `core-design/design-taste-frontend/SKILL.md` (Appendix C, honest Liquid Glass approximation), `core-design/ui-ux-pro-max/data/styles.csv` (rows "Glassmorphism", "Liquid Glass")
+- **Repo resources:** `design-systems/brand-systems/glassmorphism/` (thin tokens), `templates/html-ppt/assets/themes/glassmorphism.css`, `_archive/retired/design-taste-frontend/SKILL.md` (Appendix C, honest Liquid Glass approximation), `core-design/ui-ux-pro-max/data/styles.csv` (rows "Glassmorphism", "Liquid Glass")
 
 ### Neumorphism
 - **Lineage:** Soft extruded UI born from a viral Dribbble banking concept by Alexander Plyuto in late 2019; the name, from "neo" plus skeuomorphism, came out of Medium discussion and was popularized by Michal Malewicz [S27].
@@ -445,7 +445,7 @@ Every entry is a `###` name followed by the same eight lines. Keep the format; a
 - **Token sketch:** Type class: geometric sans; palette: off-white neutrals plus one accent; radius: large squircle, concentric; density: low.
 - **Slop risk:** The full recipe is the slop. If a soft direction truly fits, keep one move (concentric nesting done right, rule 14) and drop the eyebrow pills (rule 2), pill-everything and blur-in scroll reveals (rule 20).
 - **Saturation:** high
-- **Repo resources:** `templates/web-prototype-taste-soft/`, `core-design/high-end-visual-design/SKILL.md` (sections 4 and 5), `design-systems/brand-systems/premium/` (thin tokens)
+- **Repo resources:** `templates/web-prototype-taste-soft/`, `_archive/retired/high-end-visual-design/SKILL.md` (sections 4 and 5), `design-systems/brand-systems/premium/` (thin tokens)
 
 ### AI-native assistant
 - **Lineage:** Chat-first interfaces after ChatGPT's launch in late 2022: a centered prompt box, a greeting, suggestion chips and streamed answers; marketing pages add sparkles and gradient orbs.
@@ -565,7 +565,7 @@ Every entry is a `###` name followed by the same eight lines. Keep the format; a
 - **Token sketch:** Type class: legible sans, one family; palette: neutral plus one action color and accessible semantic colors; radius: 0 to small; density: low.
 - **Slop risk:** Generators water it down with cards, icons and marketing copy. Use the official system's components (rule 5) and write task-first copy (rule 9).
 - **Saturation:** low
-- **Repo resources:** `core-design/design-taste-frontend/SKILL.md` (section 2.A and Appendices A and B for govuk-frontend and uswds), `core-design/ui-ux-pro-max/data/styles.csv` (rows "Accessible & Ethical", "Inclusive Design")
+- **Repo resources:** `_archive/retired/design-taste-frontend/SKILL.md` (section 2.A and Appendices A and B for govuk-frontend and uswds), `core-design/ui-ux-pro-max/data/styles.csv` (rows "Accessible & Ethical", "Inclusive Design")
 
 ### Enterprise systematic
 - **Lineage:** Large design systems for complex B2B software, such as IBM's Carbon, Ant Design and Atlassian's system, which turned density and consistency into a product.
@@ -575,7 +575,7 @@ Every entry is a `###` name followed by the same eight lines. Keep the format; a
 - **Token sketch:** Type class: corporate sans; palette: neutral ramp plus one brand accent and a semantic set; radius: 0 to small; density: high, with compact and comfortable modes.
 - **Slop risk:** Hand-rolled imitations of Carbon or Ant instead of the official packages (rule 5), and a card around every table (rule 8). Install the system, theme it from the brand, and design loading, empty and error states (rule 19).
 - **Saturation:** medium
-- **Repo resources:** `design-systems/brand-systems/ibm/`, `design-systems/brand-systems/github/`, `design-systems/brand-systems/ant/` (thin tokens), `design-systems/brand-systems/enterprise/` (thin tokens), `core-design/design-taste-frontend/SKILL.md` (section 2.A, Appendix A), `core-design/impeccable/reference/product.md`
+- **Repo resources:** `design-systems/brand-systems/ibm/`, `design-systems/brand-systems/github/`, `design-systems/brand-systems/ant/` (thin tokens), `design-systems/brand-systems/enterprise/` (thin tokens), `_archive/retired/design-taste-frontend/SKILL.md` (section 2.A, Appendix A), `core-design/impeccable/reference/product.md`
 
 ### Industrial
 - **Lineage:** Machinery manuals, product engineering and German functionalism: Dieter Rams's work at Braun and the principles gathered in "Less but Better" (1995) [B11]; DIN 1451 lettering on German signage; safety markings.
@@ -693,7 +693,7 @@ Ratings describe what page generators (chat builders, coding agents, template ga
 
 **The high cluster.** Warm editorial minimal, Dark SaaS precision, Soft premium SaaS, Glassmorphism, Gradient mesh, Bento product, AI-native assistant and Corporate Memphis. In practice they arrive as one stack: a violet-to-blue accent, a reflex sans or serif, glass or soft cards, a bento of equal tiles, an eyebrow above each heading and a fade-up on scroll. Each of those moves is named somewhere in the 20 rules.
 
-**Why generators converge.** Defaults compound through training data. Tailwind UI's indigo buttons spread through tutorials and examples; in August 2025 Tailwind's co-creator Adam Wathan publicly apologized for that choice, and commentators tie it to the indigo bias of AI-built interfaces [S31][S49]. Lists of AI design tells name the same fonts, gradients and glows [S32], and generated pages are published and scraped again, which tightens the loop [S31]. Anti-slop recipes saturate too: the soft premium recipe written into `core-design/high-end-visual-design/SKILL.md` and `templates/web-prototype-taste-soft/` is now a tell, and `core-design/impeccable/reference/brand.md` flags the editorial-typographic lane. Human industries show the same pattern: luxury houses converged on plain sans logos ("blanding") [S15], and Corporate Memphis drew a backlash for its interchangeability [S24].
+**Why generators converge.** Defaults compound through training data. Tailwind UI's indigo buttons spread through tutorials and examples; in August 2025 Tailwind's co-creator Adam Wathan publicly apologized for that choice, and commentators tie it to the indigo bias of AI-built interfaces [S31][S49]. Lists of AI design tells name the same fonts, gradients and glows [S32], and generated pages are published and scraped again, which tightens the loop [S31]. Anti-slop recipes saturate too: the soft premium recipe written into `_archive/retired/high-end-visual-design/SKILL.md` and `templates/web-prototype-taste-soft/` is now a tell, and `core-design/impeccable/reference/brand.md` flags the editorial-typographic lane. Human industries show the same pattern: luxury houses converged on plain sans logos ("blanding") [S15], and Corporate Memphis drew a backlash for its interchangeability [S24].
 
 **Category defaults are the modal answer.** `core-design/ui-ux-pro-max/data/products.csv` maps product types to styles, for example "SaaS (General)" to Glassmorphism + Flat Design and "Fintech/Crypto" to Glassmorphism + Dark Mode (OLED), and the search script's `--design-system` mode assembles those defaults. Read them as what the category already looks like: the answer to depart from.
 

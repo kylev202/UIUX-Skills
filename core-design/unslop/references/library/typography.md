@@ -54,7 +54,7 @@ Flagged faces carry [saturated] in the catalog. Using one is allowed when its "s
 
 | Typefaces | Why flagged | Still legitimate when |
 |---|---|---|
-| Inter, Roboto, Open Sans, Lato, Arial, Helvetica | core-design/impeccable/reference/typeset.md calls them invisible defaults; core-design/high-end-visual-design bans them; Inter is on impeccable's reflex-reject list and design-taste-frontend 4.1 discourages it | the product already ships it; dense product UI where neutrality is the job (impeccable product.md); Roboto in Material or Android work; Inter for a public-sector or accessibility-first brief |
+| Inter, Roboto, Open Sans, Lato, Arial, Helvetica | core-design/impeccable/reference/typeset.md calls them invisible defaults; _archive/retired/high-end-visual-design bans them; Inter is on impeccable's reflex-reject list and design-taste-frontend 4.1 discourages it | the product already ships it; dense product UI where neutrality is the job (impeccable product.md); Roboto in Material or Android work; Inter for a public-sector or accessibility-first brief |
 | Montserrat, Poppins | popularity ranks 8 and 9 of 1,923 in google-fonts.csv; the stock template geometric | an existing brand already uses it |
 | Fraunces, Instrument Serif | banned as defaults by design-taste-frontend 4.1 and on impeccable's reflex-reject list | the brief names the face, or the brand already uses it |
 | Playfair Display, Cormorant (all cuts), Lora, Crimson, Crimson Pro, Crimson Text, Newsreader, DM Serif Display, DM Serif Text, IBM Plex Serif | impeccable brand.md reflex-reject list | an existing identity, or a reading product already standardized on it |

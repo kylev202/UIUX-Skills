@@ -40,7 +40,7 @@ A model predicts each token from the statistics of its training data, and safe c
 Tuning on human preferences narrows the range further. RLHF significantly reduced output diversity compared with supervised fine-tuning across several measures, and on some metrics made outputs similar regardless of input [S3]. Essays co-written with a feedback-tuned model (InstructGPT) were more homogeneous while the base model left diversity intact, and the loss came from the model's contributions [S4]. Zhang et al. trace mode collapse to typicality bias in preference data: raters favor familiar text, so even a perfect reward model and optimizer would pull toward the typical [S5]. The design consequence: asked for "something different", a model returns the most typical different thing. Get randomness from outside the model (`core-design/unslop/scripts/roll.mjs`), or ask for several candidates with their probabilities and choose a less likely one that still fits the brief; that prompt raised creative-writing diversity 1.6-2.1x over direct prompting [S5].
 
 ### RC3 Over-represented sources
-A handful of sources were copied into millions of repositories and pages: Tailwind UI, shadcn/ui and the 2020-2024 SaaS landing template. Adam Wathan, creator of Tailwind CSS: "I'd like to formally apologize for making every button in Tailwind UI `bg-indigo-500` five years ago, leading to every AI generated UI on earth also being indigo" [S6]. NN/g's test of AI prototyping tools attributes their homogeneity to common patterns in training data and default reliance on component libraries such as shadcn and frameworks such as Tailwind [S7]. This repo's own audit names the same fingerprints: the purple-blue gradient is "the most common AI design fingerprint" and three equal card columns "the most generic AI layout" (`workflow/redesign-existing-projects/SKILL.md`).
+A handful of sources were copied into millions of repositories and pages: Tailwind UI, shadcn/ui and the 2020-2024 SaaS landing template. Adam Wathan, creator of Tailwind CSS: "I'd like to formally apologize for making every button in Tailwind UI `bg-indigo-500` five years ago, leading to every AI generated UI on earth also being indigo" [S6]. NN/g's test of AI prototyping tools attributes their homogeneity to common patterns in training data and default reliance on component libraries such as shadcn and frameworks such as Tailwind [S7]. This repo's own audit names the same fingerprints: the purple-blue gradient is "the most common AI design fingerprint" and three equal card columns "the most generic AI layout" (`_archive/retired/redesign-existing-projects/SKILL.md`).
 
 ### RC4 Framework default tokens
 Starters ship decisions as defaults. The `create-next-app` Tailwind template imports Geist and Geist Mono [S8]; the shadcn/ui installation docs show a `components.json` with `"iconLibrary": "lucide"` and `"baseColor": "neutral"` [S9]; Tailwind puts slate text and `rounded-xl` cards one class away. Whatever is not overridden ships identical to every other starter built on the same kit. Rule 5 covers it: work in a system, never in its default state.
@@ -127,7 +127,7 @@ Light gray body, helper or placeholder text on a tinted off-white "for elegance"
 The starter's gray ramp used untouched, or warm and cool grays mixed on one page. Keep when: one gray family, tinted slightly toward the accent, defined as tokens.
 
 ### SLOP-C05 Category palette
-Colors guessable from the industry: navy and gold finance, sage wellness, green eco, purple AI, beige and brass for anything handmade (`core-design/design-taste-frontend/SKILL.md` 4.2). Keep when: the brief gives a reason beyond the category.
+Colors guessable from the industry: navy and gold finance, sage wellness, green eco, purple AI, beige and brass for anything handmade (`_archive/retired/design-taste-frontend/SKILL.md` 4.2). Keep when: the brief gives a reason beyond the category.
 
 ### SLOP-C06 Theme by reflex
 Dark because tech "looks cool dark", light "to be safe", or one random dark band in a light page. Keep when: the scene sentence (who, where, what light) forces the choice (`core-design/impeccable/SKILL.md`, Color and theme).
@@ -153,7 +153,7 @@ Every section centered at the same width and padding, or three or more image and
 Cards that only hold text, cards inside cards, a divider under every row. Keep when: the boundary marks a real object (selectable, draggable, separate).
 
 ### SLOP-L07 Fake structure
-"01 / 02 / 03" on sections that are not a sequence, or a giant headline with a tiny explainer floating top right (`core-design/design-taste-frontend/SKILL.md` 4.7 and 9.F). Keep when: the order is real, or the second column carries a visual.
+"01 / 02 / 03" on sections that are not a sequence, or a giant headline with a tiny explainer floating top right (`_archive/retired/design-taste-frontend/SKILL.md` 4.7 and 9.F). Keep when: the order is real, or the second column carries a visual.
 
 ## Habits: components
 
@@ -178,7 +178,7 @@ Testimonial carousel with dots, FAQ accordion, three-tower pricing, sun and moon
 Headline over a gradient or blob where the product should be. Keep when: the product is not visual and the direction chose type as the hero, in writing.
 
 ### SLOP-I02 Div-built fake UI
-Dashboards, terminals and charts drawn with styled divs and random bars, often with a fake version footer; `core-design/design-taste-frontend/SKILL.md` 9.F calls it the top LLM design tell. Keep when: never; use a real screenshot, a live component, a generated image of the real thing, or a labeled slot.
+Dashboards, terminals and charts drawn with styled divs and random bars, often with a fake version footer; `_archive/retired/design-taste-frontend/SKILL.md` 9.F calls it the top LLM design tell. Keep when: never; use a real screenshot, a live component, a generated image of the real thing, or a labeled slot.
 
 ### SLOP-I03 Category stock and generic AI art
 A diverse team at a laptop, a handshake, glossy 3D shapes, isometric blobs: the category, not the brand's world. Keep when: the image shows the brand's own people, place or object (`core-design/impeccable/reference/brand.md`, Imagery).
@@ -207,7 +207,7 @@ A headline or section a competitor could ship unchanged ("Built for teams that m
 Em dashes in a punched-up sales rhythm [S21], dramatic ellipses, exclamation marks in success messages. Keep when: never; use commas, colons, parentheses and periods.
 
 ### SLOP-W06 Inflated or performative tone
-"Redefining", "the future of", "a testament to", "crafted with care", "Quietly trusted by", "Field notes" on ordinary sections (`core-design/design-taste-frontend/SKILL.md` 9.F). Keep when: the claim is literal and provable.
+"Redefining", "the future of", "a testament to", "crafted with care", "Quietly trusted by", "Field notes" on ordinary sections (`_archive/retired/design-taste-frontend/SKILL.md` 9.F). Keep when: the claim is literal and provable.
 
 ### SLOP-W07 Generic microcopy
 "Oops! Something went wrong", "Submit", "Click here", "Success!", empty states that say "No data". Keep when: never; say what happened and what to do next.
@@ -347,7 +347,7 @@ Sections sized for imagined text; the real copy breaks them later, or never arri
 
 ## Second-order slop
 
-Second-order slop is an escape from first-order slop that enough generators, prompts and skill files adopted that it now reads as "AI, with a style prompt". Anthropic's current frontend skill lists five clusters that "are defaults rather than choices, and they appear regardless of subject": a warm cream background "with a high-contrast serif display and a terracotta or warm-clay accent"; near-black with one acid-green or vermilion accent; a newspaper layout of thin rules, square corners and dense columns; identical rounded SaaS cards; and template chrome such as tracked uppercase eyebrows, middle-dot metadata, mono for small data and arrows on links and buttons [S11]. This repo shows the mechanism. `core-design/high-end-visual-design/SKILL.md` makes double-bezel cards, pill buttons, a floating glass pill nav and pill eyebrow tags mandatory for premium work. `core-design/design-taste-frontend/SKILL.md` (4.1) and `workflow/redesign-existing-projects/SKILL.md` both replace Inter with the same short list of grotesks, one of which `core-design/impeccable/reference/brand.md` already lists as a reflex reject. Each list was an honest fix; shared by every project that loaded it, each became a uniform.
+Second-order slop is an escape from first-order slop that enough generators, prompts and skill files adopted that it now reads as "AI, with a style prompt". Anthropic's current frontend skill lists five clusters that "are defaults rather than choices, and they appear regardless of subject": a warm cream background "with a high-contrast serif display and a terracotta or warm-clay accent"; near-black with one acid-green or vermilion accent; a newspaper layout of thin rules, square corners and dense columns; identical rounded SaaS cards; and template chrome such as tracked uppercase eyebrows, middle-dot metadata, mono for small data and arrows on links and buttons [S11]. This repo shows the mechanism. `_archive/retired/high-end-visual-design/SKILL.md` makes double-bezel cards, pill buttons, a floating glass pill nav and pill eyebrow tags mandatory for premium work. `_archive/retired/design-taste-frontend/SKILL.md` (4.1) and `_archive/retired/redesign-existing-projects/SKILL.md` both replace Inter with the same short list of grotesks, one of which `core-design/impeccable/reference/brand.md` already lists as a reflex reject. Each list was an honest fix; shared by every project that loaded it, each became a uniform.
 
 ### SLOP-S01 Cream and editorial serif
 Warm off-white ground, high-contrast display serif (often italic), clay or terracotta accent, hairline rules, little imagery [S11]. `core-design/impeccable/SKILL.md` calls the cream body background "the saturated AI default of 2026", and `core-design/impeccable/reference/brand.md` lists the editorial-typographic lane as saturated. Still right for: a literal publication, or a brand whose real materials are paper and ink.
@@ -356,22 +356,22 @@ Warm off-white ground, high-contrast display serif (often italic), clay or terra
 Small monospace or tracked-caps metadata everywhere: section numbers, founding years, coordinates, build strings, middle-dot strips [S11]. Still right for: a developer tool whose labels are real identifiers (rule 4).
 
 ### SLOP-S03 Double-bezel cards
-A card nested in a card, "a glass plate sitting in an aluminum tray", on every container with large squircle radii; `core-design/high-end-visual-design/SKILL.md` requires it for all major cards, inputs and feature grids. Still right for: one hero object meant to read as hardware, with inner radius = outer minus padding.
+A card nested in a card, "a glass plate sitting in an aluminum tray", on every container with large squircle radii; `_archive/retired/high-end-visual-design/SKILL.md` requires it for all major cards, inputs and feature grids. Still right for: one hero object meant to read as hardware, with inner radius = outer minus padding.
 
 ### SLOP-S04 Pill nav and pill everything
-A detached, fully rounded glass nav bar, pill buttons, and a pill eyebrow tag over the H1 (`core-design/high-end-visual-design/SKILL.md`). Still right for: a product whose own interface already speaks that shape language.
+A detached, fully rounded glass nav bar, pill buttons, and a pill eyebrow tag over the H1 (`_archive/retired/high-end-visual-design/SKILL.md`). Still right for: a product whose own interface already speaks that shape language.
 
 ### SLOP-S05 Agency type and marquee
-Viewport-filling display type, a scrolling marquee of services or logos, rotated side text, a city and time strip (`core-design/design-taste-frontend/SKILL.md` 9.F). Still right for: a studio portfolio where type is the work, done once, with real work behind it.
+Viewport-filling display type, a scrolling marquee of services or logos, rotated side text, a city and time strip (`_archive/retired/design-taste-frontend/SKILL.md` 9.F). Still right for: a studio portfolio where type is the work, done once, with real work behind it.
 
 ### SLOP-S06 Bento everything
-Every feature section as an asymmetric bento grid, promoted as a cure for monotony (`core-design/high-end-visual-design/SKILL.md`, "The Asymmetrical Bento") and now a monotony of its own. Still right for: items that really differ in size, each cell holding a real asset.
+Every feature section as an asymmetric bento grid, promoted as a cure for monotony (`_archive/retired/high-end-visual-design/SKILL.md`, "The Asymmetrical Bento") and now a monotony of its own. Still right for: items that really differ in size, each cell holding a real asset.
 
 ### SLOP-S07 Linear-style dark
 Near-black UI, bold type, complex gradients and glassmorphism, the trend LogRocket names after Linear while noting that almost every SaaS site has started to look the same [S34]; near-black with one acid accent is also on Anthropic's list [S11]. Still right for: a tool used for hours in dim rooms, with contrast that passes.
 
 ### SLOP-S08 Grain and warm texture
-Film grain or noise over the whole page "to break digital flatness", recommended as an upgrade in `workflow/redesign-existing-projects/SKILL.md` and as an overlay technique in `core-design/high-end-visual-design/SKILL.md`. Still right for: brands whose medium is physical (print, film), with texture on the image, not on the UI.
+Film grain or noise over the whole page "to break digital flatness", recommended as an upgrade in `_archive/retired/redesign-existing-projects/SKILL.md` and as an overlay technique in `_archive/retired/high-end-visual-design/SKILL.md`. Still right for: brands whose medium is physical (print, film), with texture on the image, not on the UI.
 
 **Why deriving from the brief plus forced variety beats a new ban list**
 1. A ban removes one option and leaves the mode in place, so the next most typical option becomes the new mode: Space Grotesk after Inter [S1], one shared look after "museum quality" [S14].
@@ -470,4 +470,4 @@ Wikipedia's field guide to AI writing, an advice page from WikiProject AI Cleanu
 - [S33] Juzek, T. S., Ward, Z. B. "Why Does ChatGPT 'Delve' So Much? Exploring the Sources of Lexical Overrepresentation in Large Language Models." COLING 2025.
 - [S34] LogRocket blog, "Linear design: The SaaS design trend that's boring and bettering UI." https://blog.logrocket.com/ux-design/linear-design
 
-Repo files cited by path: `core-design/impeccable/SKILL.md`, `core-design/impeccable/reference/brand.md`, `core-design/design-taste-frontend/SKILL.md` (sections 4 and 9), `core-design/high-end-visual-design/SKILL.md`, `workflow/redesign-existing-projects/SKILL.md`, `core-design/unslop/agents/ux-strategist.md`. Pages on x.com, en.wikipedia.org, nngroup.com, saastr.com, superdesign.dev, blog.logrocket.com, ftc.gov and ui.shadcn.com were verified through search results because direct fetching was blocked in the session that wrote this file; the papers were verified through search and are cited by venue. Template momentum (RC7) is an observation from practice with no source.
+Repo files cited by path: `core-design/impeccable/SKILL.md`, `core-design/impeccable/reference/brand.md`, `_archive/retired/design-taste-frontend/SKILL.md` (sections 4 and 9), `_archive/retired/high-end-visual-design/SKILL.md`, `_archive/retired/redesign-existing-projects/SKILL.md`, `core-design/unslop/agents/ux-strategist.md`. Pages on x.com, en.wikipedia.org, nngroup.com, saastr.com, superdesign.dev, blog.logrocket.com, ftc.gov and ui.shadcn.com were verified through search results because direct fetching was blocked in the session that wrote this file; the papers were verified through search and are cited by venue. Template momentum (RC7) is an observation from practice with no source.

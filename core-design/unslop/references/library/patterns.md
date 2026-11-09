@@ -4,11 +4,11 @@ Shared reference for the UX strategist, the frontend engineer and the design cri
 
 ## Contents
 
-- [Components](#components): buttons, links, inputs, selects, checkboxes and radios, toggles, tabs, accordions, menus, dialogs, drawers, toasts, tooltips and popovers, cards, tables, lists, pagination, breadcrumbs, search, filters, date pickers, file upload, avatars, badges, progress, skeletons, steppers
-- [States and feedback](#states-and-feedback): timing thresholds, the six async states, choosing a feedback channel
-- [Forms](#forms): labels, validation timing, error messages, input types and autocomplete
+- [Components](#components): buttons, links, inputs, selects, checkboxes and radios, toggles, tabs, accordions, menus, dialogs, drawers, toasts, tooltips and popovers, cards, tables, lists, pagination, breadcrumbs, search, filters, sliders, date pickers, file upload, avatars, badges, progress, skeletons, steppers
+- [States and feedback](#states-and-feedback): timing thresholds, the six async states, other states to plan, choosing a feedback channel
+- [Forms](#forms): labels, validation timing, error messages, input types and autocomplete, long forms, formats and limits
 - [Navigation and information architecture](#navigation-and-information-architecture), [Data display](#data-display)
-- [Flows](#flows): onboarding, authentication, checkout, settings, search and filter, create-read-update-delete, notifications
+- [Flows](#flows): onboarding, authentication, checkout, settings, search and filter, create-read-update-delete, invites and permissions, import and export, notifications
 - [Repo pattern sources](#repo-pattern-sources), [Sources](#sources)
 
 ## Components
@@ -135,6 +135,12 @@ Native element first, ARIA only where no element exists (`core-design/web-design
 - **Accessibility:** checkboxes and radios in fieldsets; result count changes announced in a live region; filters in the URL, so results can be shared and the back button restores them.
 - **AI mistake:** every tap reloading results on mobile and losing the scroll position; no visible record of what is applied; chips as decoration.
 
+### Sliders
+- **Purpose and anatomy:** set a value or range where approximate is fine and the effect is visible (volume, a price filter, image size). Track, thumb, the current value as text, min and max labels; pair it with a typed field when exact values matter.
+- **States:** default, hover, focus-visible, dragging, disabled, error when a typed value falls out of range.
+- **Accessibility:** native `<input type="range">` with a label and a visible value, or the APG slider pattern with `aria-valuenow`, `aria-valuemin`, `aria-valuemax` and `aria-valuetext` for formatted values [S4]; arrow keys step and Page Up and Page Down jump; the thumb's hit area meets the touch target sizes.
+- **AI mistake:** sliders for exact numbers (quantities, years); a value visible only while dragging; a two-thumb range with no typed inputs for its ends.
+
 ### Date pickers
 - **Purpose and anatomy:** enter a date or a range. Let people type: typing is often the fastest input, especially for distant dates such as birthdays, and a short list beats a calendar when only a few dates are possible [S15]. Add a calendar when weekdays or ranges matter (bookings, scheduling).
 - **States:** default, focus-visible, open, day hover and focus, selected, in range, unavailable days (with the reason), error (unparseable or out of range), today marked.
@@ -194,6 +200,11 @@ Native element first, ARIA only where no element exists (`core-design/web-design
 - **Offline:** a persistent banner that says the connection is lost and what still works; changes queued with a visible pending marker; on reconnect, sync and report conflicts item by item.
 - **Partial or stale data:** render what arrived and give the failed region its own error and retry, because one failing widget never blanks the page (`core-design/impeccable/reference/harden.md`); show the age of cached data ("Updated 4 min ago") with a refresh action.
 
+**Other states to plan.**
+- **Permission and read-only:** say why a control is unavailable and who can change that; show read-only data as text, not as disabled inputs that look broken.
+- **Rate limits and quotas:** name the limit that was hit and when it resets ("3 invites left today, resets at 00:00 UTC").
+- **Concurrent edits:** when someone else changed the same record, show what changed and let the person keep their version or reload.
+
 **Choosing the channel.**
 - Validation messages sit inline, anchored to their field; toasts and banners carry news that needs little interaction; modal dialogs are for severe problems that need resolving [S21].
 - Optimistic updates fit low-stakes reversible actions (likes, reordering), never payments or deletions (`core-design/impeccable/reference/interaction-design.md`).
@@ -223,12 +234,15 @@ Native element first, ARIA only where no element exists (`core-design/web-design
 | Website | `type="url" autocomplete="url"` |
 | Search | `type="search"` |
 
+- **Long and multi-step forms.** Split into steps only when sections are independent or later questions depend on earlier answers; save progress per step; name the steps in a stepper; let people review every answer before the final submit.
+- **Server-side checks.** For checks that need the server (a username that is taken, an address lookup), show a small in-field pending state after the person pauses or leaves the field, then the result; never block typing while the check runs.
+- **Formats and limits.** Accept input in any reasonable format (spaces in card numbers, brackets in phone numbers) and normalize it afterwards, because masks that fight the cursor or reject pasted values cost more than they save. State limits before people reach them ("Up to 280 characters") and show the remaining count near the limit.
 - **Submit and after.** A specific button label; enabled until the request starts, then a loading state that blocks double submission; on success, replace the form with a confirmation or move to the result; warn before leaving with unsaved changes (`core-design/web-design-guidelines/references/guidelines.md`). Wroblewski's book covers label placement, grouping and actions in depth [S26].
 
 ## Navigation and information architecture
 
 - **Start from tasks.** List the top tasks by frequency and importance, then group them the way users think (card sorting when possible), not by org chart.
-- **Labels.** Use the words users use, and one term per concept across navigation, headings and buttons (terminology table in `core-design/impeccable/reference/clarify.md`).
+- **Labels.** Use the words users use, and one term per concept across navigation, headings and buttons (terminology table in `core-design/impeccable/reference/clarify.md`). Every label should predict what sits behind it; a label that needs a tooltip to explain it is the wrong label.
 - **Breadth and depth.** Keep primary navigation to a handful of items; broad and shallow suits browsing, while deep trees need breadcrumbs and search.
 - **Where am I.** Every navigation marks the current location (`aria-current` plus a visible state), and the page title matches the label that led there.
 - **Conventions.** People expect a site to work like the sites they already use (Jakob's law) [S18]: the logo linking home, the account at the top end and the cart in commerce are conventions, not slop.
@@ -243,6 +257,9 @@ Native element first, ARIA only where no element exists (`core-design/web-design
 - **Numbers.** Tabular figures on every column, stat, price, timer and counter (rule 18); numeric columns and their headers right-aligned; the same decimals within a column; the unit in the header, not in each cell (rule 2); locale formatting through `Intl.NumberFormat`; negatives with a minus sign, not red alone; abbreviations (1.2K) only in summaries, with the exact value one step away.
 - **Deltas and dates.** Name the comparison period ("vs previous 30 days"), pair sign and arrow with color, and leave neutral changes uncolored. Relative times for recent activity ("2 h ago") keep the absolute time available on focus or hover; elsewhere, absolute dates through `Intl.DateTimeFormat`.
 - **Charts.** Choose by data type and question in `core-design/ui-ux-pro-max/data/charts.csv`, which gives the best chart, when not to use it, volume thresholds and an accessible fallback. One accent for the series that matters and neutrals for the rest (rule 11); direct labels instead of a legend when there are few series; bars that start at zero; no 3D, no dual axes, no pie with many slices; spend the ink on data, not decoration [S28]; a table or text summary as the alternative; tooltips reachable by keyboard.
+- **Many series.** Small multiples on a shared scale read better than one crowded chart [S28].
+- **Narrow screens.** Rank the columns: keep the identifier and the one or two columns people decide on, and move the rest behind a row disclosure or into a horizontal scroll with a sticky first column.
+- **Live values.** Updating numbers keep tabular figures so they do not jitter (rule 18); mark a change with a brief tint rather than motion, and never re-sort rows under the pointer while someone is reading or about to click.
 - **Chart states and volume.** A skeleton frame with axes while loading, "No data for this period" with a control to change the range, errors inside the chart frame. For large sets, paginate or virtualize, filter on the server, and always show the total count.
 
 ## Flows
@@ -282,6 +299,18 @@ Native element first, ARIA only where no element exists (`core-design/web-design
 - **Delete:** undo for reversible deletes; a confirmation naming the item and the consequence for irreversible ones; bulk actions that state the count ("Delete 12 invoices", per `core-design/impeccable/reference/clarify.md`).
 - **States:** empty collection, a pending row during an optimistic create, a failed save that keeps the edits, a read-only mode that explains the missing permission.
 - **AI mistake:** "Are you sure?" on everything; a modal to edit one field.
+
+### Invites and permissions
+- **Build:** invite by email with the role chosen in the same step; roles described by what they allow, not just named; pending invites listed with resend and revoke; the inviter can see who accepted.
+- **States:** sent, pending, expired (with resend), accepted, failed (a bounced address), seat limit reached (with the upgrade or remove path).
+- **Access requests:** someone without access sees what they tried to open, who owns it and a "Request access" action, not a bare 403 (permission states in `core-design/impeccable/reference/harden.md`).
+- **AI mistake:** an "Admin, Member, Viewer" select with no explanation of what each can do; invites that fail silently.
+
+### Import and export
+- **Build:** upload (see File upload), then column mapping with automatic matches shown for confirmation, a preview of the first rows with problems flagged, then the import with determinate progress.
+- **Results:** a summary of what was imported, skipped and failed, with a downloadable per-row error report; imports that take minutes run in the background and notify when done.
+- **Export:** format and scope stated before export ("1,204 rows, current filters"); large exports delivered as a link when ready.
+- **AI mistake:** a lone "Upload CSV" button with no mapping, preview or error report; a whole import failing because of one bad row.
 
 ### Notifications
 - **Channels:** an in-app inbox for what persists, toasts for what just happened, badge counts for what needs action, email or push for what happens while people are away; choose per event by urgency.

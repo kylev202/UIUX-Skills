@@ -4,7 +4,7 @@ Reference for every unslop role. Each principle has a stable ID that other files
 
 ID prefixes: GES Gestalt, PER perception, HIE hierarchy, SCAN scanning, NIE Nielsen, SHN Shneiderman, NOR Norman, KRUG Krug, LAW Laws of UX, TYP type, COL color, LAY layout, INT interaction, MOT motion, A11Y WCAG 2.2 success criteria, CON content, EMP empirical aesthetics, DIS distinctive vs conventional.
 
-Read by: ux-strategist 2, 6, 8, 10; art-director 1, 9, 10; typographer 3; colorist 4; layout-designer 1, 5; copywriter 8; frontend-engineer 6, 7; motion-designer 6; design-critic all.
+Read by (section numbers): ux-strategist 2, 8, 10; art-director 1, 9, 10; typographer 3; colorist 4, 7; layout-designer 1, 5; copywriter 8; frontend-engineer 6, 7; motion-designer 6; design-critic all.
 
 What the big curricula share: Google's UX Design Certificate runs from foundations through empathize, define and ideate, then wireframes and low-fidelity prototypes, research and testing, and high-fidelity design [S1]; IxDF pairs beginner foundations with dedicated visual design and accessibility courses [S2]; NN/g's certification groups courses into specialties such as interaction design, which includes visual design fundamentals [S3]; and all of them test early and often, since about five users per qualitative round surface most problems and iterating beats one big study [S4]. This file is that shared core, made checkable.
 

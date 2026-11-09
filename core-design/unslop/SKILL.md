@@ -99,7 +99,9 @@ How to run each role (subagent or solo) is in "Running the specialists" below.
   owner. You dispatch the fixes (in parallel when owners touch different files) and run the
   critic again.
 - **Stop when** (from `references/rubric.md`): no P0 or P1 is open, every dimension scores at
-  least 3, the total is at least 36 of 48, and distinctiveness is at least 3.
+  least 3, the total is at least 36 of 48, distinctiveness is at least 3, and at least one fix
+  loop has run and been re-shot. A first critique that already passes still gets one round of
+  P2 polish: a first-pass "ship" from a model judging work it just made is usually lenient.
 - **Escalate** after three loops, or immediately when the critic says the problem is the brief
   or the direction. Go back to that phase, or bring the critique to the user. Do not lower the bar.
 

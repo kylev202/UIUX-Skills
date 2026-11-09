@@ -27,5 +27,7 @@ const latest = critiques[0];
 const briefTime = statSync(join(dir, 'brief.md')).mtimeMs;
 if (briefTime > latest.t) block(`the brief changed after ${latest.f}.`);
 const text = readFileSync(join(dir, latest.f), 'utf8');
-if (!/verdict:\s*\**\s*(ship|escalate)/i.test(text)) block(`${latest.f} has no ship or escalate verdict yet.`);
+// Only a finished, single-word verdict line counts. The unfilled template line
+// "Verdict: ship | fix | escalate" must not read as a ship.
+if (!/^[\s>*_-]*verdict:?[\s*_]*:?\s*(ship|escalate)[\s*_.]*$/im.test(text)) block(`${latest.f} has no single-word ship or escalate verdict yet.`);
 process.exit(0);
